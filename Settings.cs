@@ -16,6 +16,7 @@ namespace DropCounter
             TrackExalted = new ToggleNode(true);
             TrackChaos = new ToggleNode(true);
             TrackDivine = new ToggleNode(true);
+            TrackAnnulment = new ToggleNode(true);
             TrackMirror = new ToggleNode(true);
 
             // Reset Button (now with confirmation)
@@ -29,6 +30,7 @@ namespace DropCounter
         public ToggleNode TrackExalted { get; set; }
         public ToggleNode TrackChaos { get; set; }
         public ToggleNode TrackDivine { get; set; }
+        public ToggleNode TrackAnnulment { get; set; }
         public ToggleNode TrackMirror { get; set; }
 
         public ButtonNode ResetCounter { get; set; }

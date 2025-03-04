@@ -23,6 +23,7 @@ namespace DropCounter
             "Exalted Orb",
             "Chaos Orb",
             "Divine Orb",
+            "Orb of Annulment",
             "Mirror of Kalandra"
         };
 
@@ -76,6 +77,13 @@ namespace DropCounter
             {
                 int count = _dropCounts.ContainsKey("Divine Orb") ? _dropCounts["Divine Orb"] : 0;
                 displayText += $"\nDivine Orb: {count}";
+                hasTrackedItems = true;
+            }
+
+            if (Settings.TrackAnnulment.Value)
+            {
+                int count = _dropCounts.ContainsKey("Orb of Annulment") ? _dropCounts["Orb of Annulment"] : 0;
+                displayText += $"\nOrb of Annulment: {count}";
                 hasTrackedItems = true;
             }
 
