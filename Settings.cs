@@ -48,4 +48,4 @@ namespace DropCounter
 
         public ButtonNode ResetCounter { get; set; }
     }
-
+}
