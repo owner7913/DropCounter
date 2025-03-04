@@ -1,0 +1,10 @@
+C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\DropCounter.csproj.AssemblyReference.cache
+C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\DropCounter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\DropCounter.AssemblyInfoInputs.cache
+C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\DropCounter.AssemblyInfo.cs
+C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\DropCounter.csproj.CoreCompileInputs.cache
+C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\bin\Debug\net8.0-windows\DropCounter.deps.json
+C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\bin\Debug\net8.0-windows\DropCounter.dll
+C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\DropCounter.dll
+C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\refint\DropCounter.dll
+C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\ref\DropCounter.dll
