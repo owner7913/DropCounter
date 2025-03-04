@@ -22,8 +22,10 @@ namespace DropCounter
         {
             "Exalted Orb",
             "Chaos Orb",
+            "Orb of Chance",
+            "Orb of Annulment",    
+            "Perfect Jeweller's Orb",        
             "Divine Orb",
-            "Orb of Annulment",
             "Mirror of Kalandra"
         };
 
@@ -56,46 +58,81 @@ namespace DropCounter
             if (!Settings.Enable.Value) return;
 
             var displayText = "Item Drop Counter:";
+            
+            bool hasTrackedCurrency = false;
             bool hasTrackedItems = false;
 
-            // 🔹 Always show items if they are checked, even if they have not dropped yet (count = 0)
+            // 🔹 Currency Section
+            displayText += "\n\n⚖️ Currency:";
+            
             if (Settings.TrackExalted.Value)
             {
                 int count = _dropCounts.ContainsKey("Exalted Orb") ? _dropCounts["Exalted Orb"] : 0;
-                displayText += $"\nExalted Orb: {count}";
-                hasTrackedItems = true;
+                displayText += $"\n   Exalted Orb: {count}";
+                hasTrackedCurrency = true;
             }
 
             if (Settings.TrackChaos.Value)
             {
                 int count = _dropCounts.ContainsKey("Chaos Orb") ? _dropCounts["Chaos Orb"] : 0;
-                displayText += $"\nChaos Orb: {count}";
-                hasTrackedItems = true;
+                displayText += $"\n   Chaos Orb: {count}";
+                hasTrackedCurrency = true;
             }
 
-            if (Settings.TrackDivine.Value)
+            if (Settings.TrackChance.Value)
             {
-                int count = _dropCounts.ContainsKey("Divine Orb") ? _dropCounts["Divine Orb"] : 0;
-                displayText += $"\nDivine Orb: {count}";
-                hasTrackedItems = true;
+                int count = _dropCounts.ContainsKey("Orb of Chance") ? _dropCounts["Orb of Chance"] : 0;
+                displayText += $"\n   Orb of Chance: {count}";
+                hasTrackedCurrency = true;
             }
 
             if (Settings.TrackAnnulment.Value)
             {
                 int count = _dropCounts.ContainsKey("Orb of Annulment") ? _dropCounts["Orb of Annulment"] : 0;
-                displayText += $"\nOrb of Annulment: {count}";
-                hasTrackedItems = true;
+                displayText += $"\n   Orb of Annulment: {count}";
+                hasTrackedCurrency = true;
+            }
+
+            if (Settings.TrackJewellers.Value)
+            {
+                int count = _dropCounts.ContainsKey("Perfect Jeweller's Orb") ? _dropCounts["Perfect Jeweller's Orb"] : 0;
+                displayText += $"\n   Perfect Jeweller's Orb: {count}";
+                hasTrackedCurrency = true;
+            }
+
+            if (Settings.TrackDivine.Value)
+            {
+                int count = _dropCounts.ContainsKey("Divine Orb") ? _dropCounts["Divine Orb"] : 0;
+                displayText += $"\n   Divine Orb: {count}";
+                hasTrackedCurrency = true;
             }
 
             if (Settings.TrackMirror.Value)
             {
                 int count = _dropCounts.ContainsKey("Mirror of Kalandra") ? _dropCounts["Mirror of Kalandra"] : 0;
-                displayText += $"\nMirror of Kalandra: {count}";
+                displayText += $"\n   Mirror of Kalandra: {count}";
+                hasTrackedCurrency = true;
+            }
+
+            // 🔹 Items Section
+            displayText += "\n\n💎 Items:";
+            
+            if (Settings.TrackStellarAmulet.Value)
+            {
+                int count = _dropCounts.ContainsKey("Stellar Amulet") ? _dropCounts["Stellar Amulet"] : 0;
+                displayText += $"\n   Stellar Amulet: {count}";
                 hasTrackedItems = true;
             }
 
-            // 🔹 Only show "No tracked items yet" if ALL checkboxes are OFF
-            if (!hasTrackedItems)
+            if (Settings.TrackSapphireRing.Value)
+            {
+                int count = _dropCounts.ContainsKey("Sapphire Ring") ? _dropCounts["Sapphire Ring"] : 0;
+                displayText += $"\n   Sapphire Ring: {count}";
+                hasTrackedItems = true;
+            }
+
+            // 🔹 Display "No tracked items" only if both categories are empty
+            if (!hasTrackedCurrency && !hasTrackedItems)
             {
                 displayText += "\n(No tracked items yet)";
             }
@@ -108,6 +145,7 @@ namespace DropCounter
             Graphics.DrawText(displayText, new Vector2(topLeft.X, topLeft.Y), Color.White);
             Graphics.DrawBox(drawRect, Color.Black);
         }
+
 
 
         public override void Tick()

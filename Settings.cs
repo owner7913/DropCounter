@@ -12,14 +12,20 @@ namespace DropCounter
             X = new RangeNode<int>(150, -3000, 3000);
             Y = new RangeNode<int>(200, -3000, 3000);
 
-            // Checkboxes for tracking specific items
+            // 🔹 Currency Tracking
             TrackExalted = new ToggleNode(true);
             TrackChaos = new ToggleNode(true);
+            TrackChance = new ToggleNode(false);
+            TrackAnnulment = new ToggleNode(false);
+            TrackJewellers = new ToggleNode(false);
             TrackDivine = new ToggleNode(true);
-            TrackAnnulment = new ToggleNode(true);
             TrackMirror = new ToggleNode(true);
 
-            // Reset Button (now with confirmation)
+            // 🔹 Item Tracking
+            TrackStellarAmulet = new ToggleNode(false);  // Default: Off
+            TrackSapphireRing = new ToggleNode(false);   // Default: Off
+
+            // Reset Button
             ResetCounter = new ButtonNode();
         }
 
@@ -27,12 +33,19 @@ namespace DropCounter
         public RangeNode<int> X { get; set; }
         public RangeNode<int> Y { get; set; }
 
+        // 🔹 Currency
         public ToggleNode TrackExalted { get; set; }
         public ToggleNode TrackChaos { get; set; }
-        public ToggleNode TrackDivine { get; set; }
+        public ToggleNode TrackChance { get; set; }
         public ToggleNode TrackAnnulment { get; set; }
+        public ToggleNode TrackJewellers { get; set; }
+        public ToggleNode TrackDivine { get; set; }
         public ToggleNode TrackMirror { get; set; }
+
+        // 🔹 Items
+        public ToggleNode TrackStellarAmulet { get; set; }
+        public ToggleNode TrackSapphireRing { get; set; }
 
         public ButtonNode ResetCounter { get; set; }
     }
-}
+

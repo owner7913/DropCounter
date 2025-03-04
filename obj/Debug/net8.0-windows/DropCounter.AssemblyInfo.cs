@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DropCounter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a422213e4eb898e4ae2b10718ccc093b4e09589d")]
 [assembly: System.Reflection.AssemblyProductAttribute("DropCounter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DropCounter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
