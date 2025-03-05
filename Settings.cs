@@ -17,7 +17,7 @@ namespace DropCounter
             TrackChaos = new ToggleNode(true);
             TrackChance = new ToggleNode(false);
             TrackAnnulment = new ToggleNode(false);
-            TrackJewellers = new ToggleNode(false);
+            TrackPerfectJewellers = new ToggleNode(false);
             TrackDivine = new ToggleNode(true);
             TrackMirror = new ToggleNode(true);
 
@@ -38,7 +38,7 @@ namespace DropCounter
         public ToggleNode TrackChaos { get; set; }
         public ToggleNode TrackChance { get; set; }
         public ToggleNode TrackAnnulment { get; set; }
-        public ToggleNode TrackJewellers { get; set; }
+        public ToggleNode TrackPerfectJewellers { get; set; }
         public ToggleNode TrackDivine { get; set; }
         public ToggleNode TrackMirror { get; set; }
 

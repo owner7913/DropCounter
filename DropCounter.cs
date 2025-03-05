@@ -57,82 +57,53 @@ namespace DropCounter
         {
             if (!Settings.Enable.Value) return;
 
-            var displayText = "Item Drop Counter:";
+            var displayText = "Item Drop Counter:\n\n";
             
-            bool hasTrackedCurrency = false;
-            bool hasTrackedItems = false;
+            List<string> currencyList = new List<string>();
+            List<string> itemList = new List<string>();
 
             // 🔹 Currency Section
-            displayText += "\n\n⚖️ Currency:";
-            
             if (Settings.TrackExalted.Value)
-            {
-                int count = _dropCounts.ContainsKey("Exalted Orb") ? _dropCounts["Exalted Orb"] : 0;
-                displayText += $"\n   Exalted Orb: {count}";
-                hasTrackedCurrency = true;
-            }
+                currencyList.Add($"Exalted Orb: {_dropCounts.GetValueOrDefault("Exalted Orb", 0)}");
 
             if (Settings.TrackChaos.Value)
-            {
-                int count = _dropCounts.ContainsKey("Chaos Orb") ? _dropCounts["Chaos Orb"] : 0;
-                displayText += $"\n   Chaos Orb: {count}";
-                hasTrackedCurrency = true;
-            }
+                currencyList.Add($"Chaos Orb: {_dropCounts.GetValueOrDefault("Chaos Orb", 0)}");
 
             if (Settings.TrackChance.Value)
-            {
-                int count = _dropCounts.ContainsKey("Orb of Chance") ? _dropCounts["Orb of Chance"] : 0;
-                displayText += $"\n   Orb of Chance: {count}";
-                hasTrackedCurrency = true;
-            }
+                currencyList.Add($"Orb of Chance: {_dropCounts.GetValueOrDefault("Orb of Chance", 0)}");
 
             if (Settings.TrackAnnulment.Value)
-            {
-                int count = _dropCounts.ContainsKey("Orb of Annulment") ? _dropCounts["Orb of Annulment"] : 0;
-                displayText += $"\n   Orb of Annulment: {count}";
-                hasTrackedCurrency = true;
-            }
+                currencyList.Add($"Orb of Annulment: {_dropCounts.GetValueOrDefault("Orb of Annulment", 0)}");
 
-            if (Settings.TrackJewellers.Value)
-            {
-                int count = _dropCounts.ContainsKey("Perfect Jeweller's Orb") ? _dropCounts["Perfect Jeweller's Orb"] : 0;
-                displayText += $"\n   Perfect Jeweller's Orb: {count}";
-                hasTrackedCurrency = true;
-            }
+            if (Settings.TrackPerfectJewellers.Value)
+                currencyList.Add($"Perfect Jeweller's Orb: {_dropCounts.GetValueOrDefault("Perfect Jeweller's Orb", 0)}");
 
             if (Settings.TrackDivine.Value)
-            {
-                int count = _dropCounts.ContainsKey("Divine Orb") ? _dropCounts["Divine Orb"] : 0;
-                displayText += $"\n   Divine Orb: {count}";
-                hasTrackedCurrency = true;
-            }
+                currencyList.Add($"Divine Orb: {_dropCounts.GetValueOrDefault("Divine Orb", 0)}");
 
             if (Settings.TrackMirror.Value)
-            {
-                int count = _dropCounts.ContainsKey("Mirror of Kalandra") ? _dropCounts["Mirror of Kalandra"] : 0;
-                displayText += $"\n   Mirror of Kalandra: {count}";
-                hasTrackedCurrency = true;
-            }
+                currencyList.Add($"Mirror of Kalandra: {_dropCounts.GetValueOrDefault("Mirror of Kalandra", 0)}");
 
             // 🔹 Items Section
-            displayText += "\n\n💎 Items:";
-            
             if (Settings.TrackStellarAmulet.Value)
-            {
-                int count = _dropCounts.ContainsKey("Stellar Amulet") ? _dropCounts["Stellar Amulet"] : 0;
-                displayText += $"\n   Stellar Amulet: {count}";
-                hasTrackedItems = true;
-            }
+                itemList.Add($"Stellar Amulet: {_dropCounts.GetValueOrDefault("Stellar Amulet", 0)}");
 
             if (Settings.TrackSapphireRing.Value)
+                itemList.Add($"Sapphire Ring: {_dropCounts.GetValueOrDefault("Sapphire Ring", 0)}");
+
+            // Determine max list count to align properly
+            int maxCount = Math.Max(currencyList.Count, itemList.Count);
+            displayText += "Items:".PadRight(25) + "Currency:\n"; // Column headers
+
+            for (int i = 0; i < maxCount; i++)
             {
-                int count = _dropCounts.ContainsKey("Sapphire Ring") ? _dropCounts["Sapphire Ring"] : 0;
-                displayText += $"\n   Sapphire Ring: {count}";
-                hasTrackedItems = true;
+                string itemEntry = (i < itemList.Count) ? itemList[i].PadRight(25) : "".PadRight(25);
+                string currencyEntry = (i < currencyList.Count) ? currencyList[i] : "";
+                displayText += $"{itemEntry} {currencyEntry}\n";
             }
 
-            // 🔹 Display "No tracked items" only if both categories are empty
-            if (!hasTrackedCurrency && !hasTrackedItems)
+            // If nothing is tracked, show default message
+            if (currencyList.Count == 0 && itemList.Count == 0)
             {
                 displayText += "\n(No tracked items yet)";
             }
@@ -145,7 +116,6 @@ namespace DropCounter
             Graphics.DrawText(displayText, new Vector2(topLeft.X, topLeft.Y), Color.White);
             Graphics.DrawBox(drawRect, Color.Black);
         }
-
 
 
         public override void Tick()
