@@ -134,7 +134,7 @@ namespace DropCounter
             // 🔹 Ensure alignment by matching rows
             int maxRows = Math.Max(itemLines.Count, currencyLines.Count);
 
-            displayText += "Items:              Currency:\n";
+            displayText += "Items:               Currency:\n";
 
             for (int i = 0; i < maxRows; i++)
             {
