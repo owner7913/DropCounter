@@ -20,6 +20,8 @@ namespace DropCounter
 
         private HashSet<string> _trackedItems = new HashSet<string>
         {
+            "Stellar Amulet",
+            "Sapphire Ring",
             "Exalted Orb",
             "Chaos Orb",
             "Orb of Chance",
