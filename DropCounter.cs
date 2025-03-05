@@ -57,55 +57,100 @@ namespace DropCounter
         {
             if (!Settings.Enable.Value) return;
 
-            List<string> currencyList = new List<string>();
-            List<string> itemList = new List<string>();
+            // Column widths for proper alignment
+            const int itemColumnWidth = 25; 
+            const int currencyColumnWidth = 30; 
 
-            // 🔹 Currency Section
-            if (Settings.TrackExalted.Value)
-                currencyList.Add($"Exalted Orb: {_dropCounts.GetValueOrDefault("Exalted Orb", 0)}");
+            var displayText = "";
 
-            if (Settings.TrackChaos.Value)
-                currencyList.Add($"Chaos Orb: {_dropCounts.GetValueOrDefault("Chaos Orb", 0)}");
+            List<string> itemLines = new List<string>();
+            List<string> currencyLines = new List<string>();
 
-            if (Settings.TrackChance.Value)
-                currencyList.Add($"Orb of Chance: {_dropCounts.GetValueOrDefault("Orb of Chance", 0)}");
-
-            if (Settings.TrackAnnulment.Value)
-                currencyList.Add($"Orb of Annulment: {_dropCounts.GetValueOrDefault("Orb of Annulment", 0)}");
-
-            if (Settings.TrackPerfectJewellers.Value)
-                currencyList.Add($"Perfect Jeweller's Orb: {_dropCounts.GetValueOrDefault("Perfect Jeweller's Orb", 0)}");
-
-            if (Settings.TrackDivine.Value)
-                currencyList.Add($"Divine Orb: {_dropCounts.GetValueOrDefault("Divine Orb", 0)}");
-
-            if (Settings.TrackMirror.Value)
-                currencyList.Add($"Mirror of Kalandra: {_dropCounts.GetValueOrDefault("Mirror of Kalandra", 0)}");
+            bool hasTrackedCurrency = false;
+            bool hasTrackedItems = false;
 
             // 🔹 Items Section
             if (Settings.TrackStellarAmulet.Value)
-                itemList.Add($"Stellar Amulet: {_dropCounts.GetValueOrDefault("Stellar Amulet", 0)}");
-
-            if (Settings.TrackSapphireRing.Value)
-                itemList.Add($"Sapphire Ring: {_dropCounts.GetValueOrDefault("Sapphire Ring", 0)}");
-
-            // Determine max list count to align properly
-            int maxCount = Math.Max(currencyList.Count, itemList.Count);
-            
-            // 🔹 Properly formatted header for columns
-            string displayText = "Items:".PadRight(20) + "Currency:\n"; 
-
-            for (int i = 0; i < maxCount; i++)
             {
-                string itemEntry = (i < itemList.Count) ? itemList[i].PadRight(20) : "".PadRight(20);
-                string currencyEntry = (i < currencyList.Count) ? currencyList[i] : "";
-                displayText += $"{itemEntry} {currencyEntry}\n";
+                int count = _dropCounts.ContainsKey("Stellar Amulet") ? _dropCounts["Stellar Amulet"] : 0;
+                itemLines.Add(string.Format("{0,-" + itemColumnWidth + "} {1}", "Stellar Amulet:", count));
+                hasTrackedItems = true;
             }
 
-            // If nothing is tracked, show default message
-            if (currencyList.Count == 0 && itemList.Count == 0)
+            if (Settings.TrackSapphireRing.Value)
             {
-                displayText = "(No tracked items yet)";
+                int count = _dropCounts.ContainsKey("Sapphire Ring") ? _dropCounts["Sapphire Ring"] : 0;
+                itemLines.Add(string.Format("{0,-" + itemColumnWidth + "} {1}", "Sapphire Ring:", count));
+                hasTrackedItems = true;
+            }
+
+            // 🔹 Currency Section
+            if (Settings.TrackExalted.Value)
+            {
+                int count = _dropCounts.ContainsKey("Exalted Orb") ? _dropCounts["Exalted Orb"] : 0;
+                currencyLines.Add(string.Format("{0,-" + currencyColumnWidth + "} {1}", "Exalted Orb:", count));
+                hasTrackedCurrency = true;
+            }
+
+            if (Settings.TrackChaos.Value)
+            {
+                int count = _dropCounts.ContainsKey("Chaos Orb") ? _dropCounts["Chaos Orb"] : 0;
+                currencyLines.Add(string.Format("{0,-" + currencyColumnWidth + "} {1}", "Chaos Orb:", count));
+                hasTrackedCurrency = true;
+            }
+
+            if (Settings.TrackChance.Value)
+            {
+                int count = _dropCounts.ContainsKey("Orb of Chance") ? _dropCounts["Orb of Chance"] : 0;
+                currencyLines.Add(string.Format("{0,-" + currencyColumnWidth + "} {1}", "Orb of Chance:", count));
+                hasTrackedCurrency = true;
+            }
+
+            if (Settings.TrackAnnulment.Value)
+            {
+                int count = _dropCounts.ContainsKey("Orb of Annulment") ? _dropCounts["Orb of Annulment"] : 0;
+                currencyLines.Add(string.Format("{0,-" + currencyColumnWidth + "} {1}", "Orb of Annulment:", count));
+                hasTrackedCurrency = true;
+            }
+
+            if (Settings.TrackPerfectJewellers.Value)
+            {
+                int count = _dropCounts.ContainsKey("Perfect Jeweller's Orb") ? _dropCounts["Perfect Jeweller's Orb"] : 0;
+                currencyLines.Add(string.Format("{0,-" + currencyColumnWidth + "} {1}", "Perfect Jeweller's Orb:", count));
+                hasTrackedCurrency = true;
+            }
+
+            if (Settings.TrackDivine.Value)
+            {
+                int count = _dropCounts.ContainsKey("Divine Orb") ? _dropCounts["Divine Orb"] : 0;
+                currencyLines.Add(string.Format("{0,-" + currencyColumnWidth + "} {1}", "Divine Orb:", count));
+                hasTrackedCurrency = true;
+            }
+
+            if (Settings.TrackMirror.Value)
+            {
+                int count = _dropCounts.ContainsKey("Mirror of Kalandra") ? _dropCounts["Mirror of Kalandra"] : 0;
+                currencyLines.Add(string.Format("{0,-" + currencyColumnWidth + "} {1}", "Mirror of Kalandra:", count));
+                hasTrackedCurrency = true;
+            }
+
+            // Determine max rows for correct row pairing
+            int maxRows = Math.Max(itemLines.Count, currencyLines.Count);
+
+            // Header
+            displayText += string.Format("{0,-" + itemColumnWidth + "} {1,-" + currencyColumnWidth + "}\n", "Items:", "Currency:");
+
+            for (int i = 0; i < maxRows; i++)
+            {
+                string itemText = i < itemLines.Count ? itemLines[i] : "".PadRight(itemColumnWidth);
+                string currencyText = i < currencyLines.Count ? currencyLines[i] : "";
+                displayText += $"{itemText} {currencyText}\n";
+            }
+
+            // Show "No tracked items" if everything is empty
+            if (!hasTrackedCurrency && !hasTrackedItems)
+            {
+                displayText += "\n(No tracked items yet)";
             }
 
             var size = Graphics.MeasureText(displayText, 20);
