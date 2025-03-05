@@ -57,8 +57,6 @@ namespace DropCounter
         {
             if (!Settings.Enable.Value) return;
 
-            var displayText = "Item Drop Counter:\n\n";
-            
             List<string> currencyList = new List<string>();
             List<string> itemList = new List<string>();
 
@@ -93,11 +91,13 @@ namespace DropCounter
 
             // Determine max list count to align properly
             int maxCount = Math.Max(currencyList.Count, itemList.Count);
-            displayText += "Items:".PadRight(25) + "Currency:\n"; // Column headers
+            
+            // 🔹 Properly formatted header for columns
+            string displayText = "Items:".PadRight(20) + "Currency:\n"; 
 
             for (int i = 0; i < maxCount; i++)
             {
-                string itemEntry = (i < itemList.Count) ? itemList[i].PadRight(25) : "".PadRight(25);
+                string itemEntry = (i < itemList.Count) ? itemList[i].PadRight(20) : "".PadRight(20);
                 string currencyEntry = (i < currencyList.Count) ? currencyList[i] : "";
                 displayText += $"{itemEntry} {currencyEntry}\n";
             }
@@ -105,7 +105,7 @@ namespace DropCounter
             // If nothing is tracked, show default message
             if (currencyList.Count == 0 && itemList.Count == 0)
             {
-                displayText += "\n(No tracked items yet)";
+                displayText = "(No tracked items yet)";
             }
 
             var size = Graphics.MeasureText(displayText, 20);

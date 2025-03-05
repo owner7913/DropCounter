@@ -30,6 +30,7 @@ A simple **drop tracking plugin** for **Path of Exile 2**, built for **ExileCore
 ## ⚙️ Contributing
 This is a simple **community-driven project**!  
 If you want to improve the plugin, **submit a pull request** on GitHub.
+Also if you wanna add tracked items, **submit a pull request** on GitHub.
 
 ## 📜 License
 This project is open-source under the **MIT License**.
