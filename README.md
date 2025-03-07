@@ -1,5 +1,6 @@
-A simple **drop tracking plugin** for **Path of Exile 2**, built for **ExileCore2**. This plugin **tracks item drops** from the ground in real time and displays a counter in-game.
+# 🪙 Drop Counter - ExileCore2 Plugin
 
+A simple **drop tracking plugin** for **Path of Exile 2**, built for **ExileCore2**. This plugin **tracks item drops** from the ground in real time and displays a counter in-game.
 ## ✨ Features
 ✔️ Tracks specific currency items: **Exalted Orb, Chaos Orb, Divine Orb, Mirror of Kalandra**  
 ✔️ **Customizable UI** – Drag and position the counter anywhere on the screen  
