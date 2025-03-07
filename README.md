@@ -1,5 +1,3 @@
-![image](https://github.com/user-attachments/assets/7f489fe9-1958-434c-8902-4c433e493c62)# 🪙 Drop Counter - ExileCore2 Plugin
-
 A simple **drop tracking plugin** for **Path of Exile 2**, built for **ExileCore2**. This plugin **tracks item drops** from the ground in real time and displays a counter in-game.
 
 ## ✨ Features
