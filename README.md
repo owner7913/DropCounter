@@ -1,4 +1,4 @@
-# 🪙 Drop Counter - ExileCore2 Plugin
+![image](https://github.com/user-attachments/assets/7f489fe9-1958-434c-8902-4c433e493c62)# 🪙 Drop Counter - ExileCore2 Plugin
 
 A simple **drop tracking plugin** for **Path of Exile 2**, built for **ExileCore2**. This plugin **tracks item drops** from the ground in real time and displays a counter in-game.
 
@@ -26,6 +26,10 @@ A simple **drop tracking plugin** for **Path of Exile 2**, built for **ExileCore
 - **Track Divine Orb** → Show/hide Divine Orbs in the counter  
 - **Track Mirror of Kalandra** → Show/hide Mirrors in the counter  
 - **Reset Counter** → Clears all tracked drops and resets to `0`  
+
+## 🖼️ Preview
+![image](https://github.com/user-attachments/assets/d627a965-65ca-4391-a059-151df9c805c1)
+
 
 ## ⚙️ Contributing
 This is a simple **community-driven project**!  
