@@ -25,8 +25,8 @@ namespace DropCounter
             "Exalted Orb",
             "Chaos Orb",
             "Orb of Chance",
-            "Orb of Annulment",    
-            "Perfect Jeweller's Orb",        
+            "Orb of Annulment",
+            "Perfect Jeweller's Orb",
             "Divine Orb",
             "Mirror of Kalandra"
         };
@@ -42,9 +42,9 @@ namespace DropCounter
             Settings.ResetCounter.OnPressed += () =>
             {
                 DialogResult result = MessageBox.Show(
-                    "Are you sure you want to reset all drop counters?", 
-                    "Reset Confirmation", 
-                    MessageBoxButtons.YesNo, 
+                    "Are you sure you want to reset all drop counters?",
+                    "Reset Confirmation",
+                    MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
                 );
 
@@ -162,7 +162,6 @@ namespace DropCounter
             }
         }
 
-
         public override void Tick()
         {
             var labelsOnGround = GameController?.IngameState?.IngameUi?.ItemsOnGroundLabelElement?.LabelsOnGround;
@@ -181,6 +180,10 @@ namespace DropCounter
                 if (string.IsNullOrEmpty(itemText))
                     continue;
 
+                // Check if the item label is visible before counting it
+                if (!label.IsVisible)
+                    continue;
+
                 int quantity = 1;
                 string itemName = itemText;
 
@@ -189,12 +192,6 @@ namespace DropCounter
                 {
                     quantity = int.Parse(match.Groups[1].Value); // Extract quantity (e.g., "20")
                     itemName = match.Groups[2].Value.Trim(); // Extract item name (e.g., "Exalted Orb")
-                }
-
-                // Handle case where no "x" exists, meaning it's a single item (e.g., "Exalted Orb")
-                if (!match.Success)
-                {
-                    itemName = itemText.Trim(); // Use the full text directly
                 }
 
                 if (!_trackedItems.Contains(itemName))
@@ -221,6 +218,5 @@ namespace DropCounter
             _dropCounts.Clear();
             DebugWindow.LogMsg("DropCounter: Counters have been reset.");
         }
-
     }
 }
