@@ -7,7 +7,7 @@ A simple **drop tracking plugin** for **Path of Exile 2**, built for **ExileCore
 ✔️ **Toggle visibility for each currency** – Show/hide specific tracked items  
 ✔️ **Reset Counter Button** – Reset session-based tracking with one click  
 ✔️ **Persists counts until reset** – Track drops over time  
-
+✔️ **Stellar and  Sapphire counting** – Count Stellar and Sapphires - Labels must be visable tho
 ## 📥 Installation
 1. Download the plugin and place it inside your `Plugins/Source/` folder in **ExileCore2** or use the pluginupdater
 2. Open **ExileCore2** and navigate to the **Plugin Loader**.  
