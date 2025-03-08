@@ -61,7 +61,6 @@ namespace DropCounter
 
             var displayText = "";
 
-            // Create separate lists for items and currency
             List<string> itemLines = new List<string>();
             List<string> currencyLines = new List<string>();
 
@@ -133,7 +132,6 @@ namespace DropCounter
                 hasTrackedCurrency = true;
             }
 
-            // 🔹 Ensure alignment by matching rows
             int maxRows = Math.Max(itemLines.Count, currencyLines.Count);
 
             displayText += "Items:               Currency:\n";
@@ -142,10 +140,9 @@ namespace DropCounter
             {
                 string itemText = i < itemLines.Count ? itemLines[i] : "";
                 string currencyText = i < currencyLines.Count ? currencyLines[i] : "";
-                displayText += $"{itemText,-20} {currencyText}\n"; // Keeps everything aligned
+                displayText += $"{itemText,-20} {currencyText}\n";
             }
 
-            // Show "No tracked items" only if both categories are empty
             if (!hasTrackedCurrency && !hasTrackedItems)
             {
                 displayText += "\n(No tracked items yet)";
@@ -157,8 +154,14 @@ namespace DropCounter
             var drawRect = new RectangleF(topLeft.X - 5, topLeft.Y - 5, size.X + 10, size.Y + 10);
 
             Graphics.DrawText(displayText, new Vector2(topLeft.X, topLeft.Y), Color.White);
-            Graphics.DrawBox(drawRect, Color.Black);
+
+            // Only draw background box if transparency is disabled
+            if (!Settings.TransparentBackground.Value)
+            {
+                Graphics.DrawBox(drawRect, Color.Black);
+            }
         }
+
 
         public override void Tick()
         {

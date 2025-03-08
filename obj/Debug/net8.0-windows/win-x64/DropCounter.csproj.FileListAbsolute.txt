@@ -8,3 +8,4 @@ C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\De
 C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\win-x64\DropCounter.dll
 C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\win-x64\refint\DropCounter.dll
 C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\win-x64\ref\DropCounter.dll
+C:\Users\danie\Desktop\Poe2 STuff\ExileCore2-9\Plugins\Source\DropCounter\obj\Debug\net8.0-windows\win-x64\DropCounter.sourcelink.json

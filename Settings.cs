@@ -11,6 +11,9 @@ namespace DropCounter
             Enable = new ToggleNode(true);
             X = new RangeNode<int>(150, -3000, 3000);
             Y = new RangeNode<int>(200, -3000, 3000);
+            
+            // 🔹 Transparency Option
+            TransparentBackground = new ToggleNode(false); // Default: Off
 
             // 🔹 Currency Tracking
             TrackExalted = new ToggleNode(true);
@@ -22,8 +25,8 @@ namespace DropCounter
             TrackMirror = new ToggleNode(true);
 
             // 🔹 Item Tracking
-            TrackStellarAmulet = new ToggleNode(false);  // Default: Off
-            TrackSapphireRing = new ToggleNode(false);   // Default: Off
+            TrackStellarAmulet = new ToggleNode(false);
+            TrackSapphireRing = new ToggleNode(false);
 
             // Reset Button
             ResetCounter = new ButtonNode();
@@ -32,6 +35,9 @@ namespace DropCounter
         public ToggleNode Enable { get; set; }
         public RangeNode<int> X { get; set; }
         public RangeNode<int> Y { get; set; }
+
+        // 🔹 Transparency
+        public ToggleNode TransparentBackground { get; set; }
 
         // 🔹 Currency
         public ToggleNode TrackExalted { get; set; }
